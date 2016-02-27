@@ -46,6 +46,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         if let billText = billTextField.text {
             defaults.setValue(billText, forKey: "bill_value")
         }
+        defaults.synchronize()
     }
     
     override func viewWillAppear(animated: Bool) {
