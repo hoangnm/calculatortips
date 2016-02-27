@@ -1,0 +1,6 @@
+## Build generated
+build/
+DerivedData/
+
+!default.pbxuser
+xcuserdata/
