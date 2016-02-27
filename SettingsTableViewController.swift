@@ -40,6 +40,9 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate {
     
         let tipSegmentIndex = tipControl.selectedSegmentIndex
         defaults.setInteger(tipSegmentIndex, forKey: "tip_segment_index")
+        
+        defaults.synchronize()
+        
     }
 
     override func didReceiveMemoryWarning() {
