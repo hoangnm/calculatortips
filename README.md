@@ -2,7 +2,7 @@
 
 This is a Tip Calculator application for iOS submitted as the pre-assignment requirement for CoderSchool.
 
-Time spent: 7 hours
+Time spent: 9 hours
 
 Completed:
  * [x] Required: User can enter a bill amount, choose a tip percentage, and see the tip and total values.
