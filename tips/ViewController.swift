@@ -25,6 +25,27 @@ class ViewController: UIViewController, UITextFieldDelegate {
         totalLabel.text = "$0.00"
         billTextField.textColor = UIColor.whiteColor()
         billTextField.delegate = self
+        let defaults = NSUserDefaults.standardUserDefaults()
+        if let lastDateActiveObj = defaults.objectForKey("last_date_active") {
+            let billValue = defaults.objectForKey("bill_value") as! String
+            let lastDateActive = lastDateActiveObj as! NSDate
+            let date = NSDate()
+            if date.timeIntervalSinceDate(lastDateActive) < 60 {
+                billTextField.text = billValue
+            }
+        }
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationWillResignActive", name: UIApplicationWillResignActiveNotification, object: nil)
+    }
+    
+     //MARK: - Observe Notification Application State
+    
+    func applicationWillResignActive() {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let date = NSDate()
+        defaults.setValue(date, forKey: "last_date_active")
+        if let billText = billTextField.text {
+            defaults.setValue(billText, forKey: "bill_value")
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -51,6 +72,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         showViewOrInputOnly()
     }
     
+    //MARK: - Handle ViewInput
     func showInputViewOnly() {
         UIView.animateWithDuration(0.4) { () -> Void in
             self.updateChildFramePosition(350, billsFrameY: 190)
