@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var tipLabel: UILabel!
     @IBOutlet weak var billTextField: UITextField!
@@ -24,6 +24,7 @@ class ViewController: UIViewController {
         tipLabel.text = "$0.00"
         totalLabel.text = "$0.00"
         billTextField.textColor = UIColor.whiteColor()
+        billTextField.delegate = self
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -95,6 +96,17 @@ class ViewController: UIViewController {
                 updateTip()
             }
         }
+    }
+    
+    // MARK: - UITextFieldDelegate
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        if(!string.isEmpty) {
+            let number = Int(string)
+            if  number == nil {
+                return false
+            }
+        }
+        return true;
     }
 
     @IBAction func onEditingChanged(sender: AnyObject) {
