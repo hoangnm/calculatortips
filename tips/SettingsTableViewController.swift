@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SettingsTableViewController: UITableViewController, UITextFieldDelegate {
+class SettingsTableViewController: UITableViewController {
     // MARK: - Properties
     @IBOutlet weak var darkThemeSwitch: UISwitch!
     @IBOutlet weak var tipControl: UISegmentedControl!
@@ -49,8 +49,6 @@ class SettingsTableViewController: UITableViewController, UITextFieldDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    // MARK: - UITextFieldDelegate
         
     // MARK: - Action
     @IBAction func onDarkThemChange(sender: UISwitch) {
